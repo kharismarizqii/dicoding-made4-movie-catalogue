@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KatalogFilm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="change_language_settings">Ganti Bahasa</string>
+    <string name="title_bar_1">Film</string>
+    <string name="title_bar_2">Acara TV</string>
+    <string name="tvt_overview">Sinopsis</string>
+    <string name="release">Rilis: </string>
+    <string name="detail_movie">Detail Film</string>
+    <string name="detail_tv">Detail Acara TV</string>
+
+
+</resources>
