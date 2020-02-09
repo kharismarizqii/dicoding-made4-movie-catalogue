@@ -16,4 +16,6 @@
     <string name="cd_poster_movie">Poster Film</string>
     <string name="cd_backdrop_tv">Backdrop Acara TV</string>
     <string name="cd_poster_tv">Poster Acara TV</string>
+    <string name="toast_failedtv">TV Show ini sudah jadi favorit anda</string>
+    <string name="toast_failedmovie">Film ini sudah jadi favorit anda</string>
 </resources>

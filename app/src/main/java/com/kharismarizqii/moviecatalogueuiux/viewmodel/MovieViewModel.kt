@@ -47,6 +47,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
                 for (position in 0 until jsonArray.length()-1){
                     val data: JSONObject = jsonArray.getJSONObject(position)
                     val movieDB = MovieDB(
+                        data.getInt("id"),
                         data.getString("title"),
                         data.getDouble("vote_average"),
                         data.getString("overview"),

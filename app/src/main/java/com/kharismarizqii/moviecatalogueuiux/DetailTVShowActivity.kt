@@ -78,6 +78,7 @@ class DetailTVShowActivity : AppCompatActivity() {
     }
 
     private fun addToFavorite(tvShow: TVShowDB) {
+        tvShowFav?.id = tvShow.id
         tvShowFav?.title = tvShow.title
         tvShowFav?.overview = tvShow.overview
         tvShowFav?.rating = tvShow.rating
@@ -90,6 +91,7 @@ class DetailTVShowActivity : AppCompatActivity() {
         intent.putExtra(EXTRA_POSITION_TV, position)
 
         val values = ContentValues()
+        values.put(DatabaseContract.FavoriteTVColumns.ID, tvShow.id)
         values.put(DatabaseContract.FavoriteTVColumns.TITLE, tvShow.title)
         values.put(DatabaseContract.FavoriteTVColumns.RATING, tvShow.rating)
         values.put(DatabaseContract.FavoriteTVColumns.OVERVIEW, tvShow.overview)
@@ -105,7 +107,7 @@ class DetailTVShowActivity : AppCompatActivity() {
             setResult(RESULT_ADD, intent)
             finish()
         } else {
-            Toast.makeText(this@DetailTVShowActivity, "Gagal menambah data", Toast.LENGTH_SHORT)
+            Toast.makeText(this@DetailTVShowActivity, R.string.toast_failedtv, Toast.LENGTH_SHORT)
                 .show()
         }
     }

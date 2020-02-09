@@ -48,7 +48,7 @@ class FavoriteMovieHelper(context: Context) {
             null,
             null,
             null,
-            "$ID ASC"
+            null
         )
     }
 

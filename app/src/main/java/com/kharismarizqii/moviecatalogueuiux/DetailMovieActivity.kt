@@ -37,6 +37,15 @@ class DetailMovieActivity : AppCompatActivity() {
         const val EXTRA_POSITION_MOVIE = "extra_position_movie"
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkFavorite()
+    }
+
+    private fun checkFavorite() {
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_movie)
@@ -74,6 +83,7 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun addToFavorite(movie: MovieDB) {
+        movieFav?.id = movie.id
         movieFav?.title = movie.title
         movieFav?.overview = movie.overview
         movieFav?.rating = movie.rating
@@ -86,6 +96,7 @@ class DetailMovieActivity : AppCompatActivity() {
         intent.putExtra(EXTRA_POSITION_MOVIE, position)
 
         val values = ContentValues()
+        values.put(DatabaseContract.FavoriteMovieColumns.ID, movie.id)
         values.put(DatabaseContract.FavoriteMovieColumns.TITLE, movie.title)
         values.put(DatabaseContract.FavoriteMovieColumns.OVERVIEW, movie.overview)
         values.put(DatabaseContract.FavoriteMovieColumns.RATING, movie.rating)
@@ -101,7 +112,7 @@ class DetailMovieActivity : AppCompatActivity() {
             setResult(RESULT_ADD, intent)
             finish()
         } else {
-            Toast.makeText(this@DetailMovieActivity, "Gagal menambah data", Toast.LENGTH_SHORT)
+            Toast.makeText(this@DetailMovieActivity, R.string.toast_failedmovie, Toast.LENGTH_SHORT)
                 .show()
         }
     }

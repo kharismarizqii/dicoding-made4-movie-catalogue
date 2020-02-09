@@ -8,10 +8,10 @@ import com.kharismarizqii.moviecatalogueuiux.database.DatabaseContract.FavoriteT
 internal class DatabaseTVHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object{
-        private const val DATABASE_NAME = "dbfavoritemovie"
+        private const val DATABASE_NAME = "dbfavoritetv"
         private const val DATABASE_VERSION = 3
         private val SQL_CREATE_TABLE_FAVORITE_TV = "CREATE TABLE $TABLE_NAME" +
-                "(${DatabaseContract.FavoriteTVColumns.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "(${DatabaseContract.FavoriteTVColumns.ID} INTEGER PRIMARY KEY," +
                 "${DatabaseContract.FavoriteTVColumns.TITLE} TEXT NOT NULL," +
                 "${DatabaseContract.FavoriteTVColumns.OVERVIEW} TEXT NOT NULL," +
                 "${DatabaseContract.FavoriteTVColumns.RATING} DOUBLE NOT NULL," +

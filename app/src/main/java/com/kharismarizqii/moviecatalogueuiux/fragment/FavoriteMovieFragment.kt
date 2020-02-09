@@ -2,6 +2,7 @@ package com.kharismarizqii.moviecatalogueuiux.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,6 +73,7 @@ class FavoriteMovieFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             val deferredMovies = async(Dispatchers.IO) {
                 val cursor = favoriteMovieHelper.queryAll()
+                Log.d("isi cursor", "cursor: ${cursor.count}")
                 MappingHelper.mapCursorToArrayList(cursor)
             }
             progressBar.visibility = View.INVISIBLE

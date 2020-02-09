@@ -20,12 +20,15 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewV
                 this.listMovie.clear()
             }
             this.listMovie.addAll(listMovie)
+            Log.d("CEK ISI LIST", "listMovie: $listMovie")
             notifyDataSetChanged()
         }
 
     inner class CardViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movieDB: FavoriteMovieDB) {
             with(itemView) {
+                Log.d("CEK ISI LIST", "movieDB: $movieDB")
+
                 tvm_title.text = movieDB.title
                 Log.d("isi objek", "CardViewViewHolder ${movieDB.title}")
                 tvm_overview.text = movieDB.overview

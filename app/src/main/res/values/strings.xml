@@ -16,7 +16,9 @@
     <string name="cd_backdrop_tv">Backdrop TVShow</string>
     <string name="cd_poster_tv">Poster TVShow</string>
     <string name="detail" translatable="false">Detail</string>
-    <string name="favorite">favorite</string>
+    <string name="favorite" translatable="false">favorite</string>
+    <string name="toast_failedtv">This TV Show already favorited</string>
+    <string name="toast_failedmovie">This Movie already favorited</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

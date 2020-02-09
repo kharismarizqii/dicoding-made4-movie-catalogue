@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TVShowDB(
+    var id: Int,
     var title: String,
     var rating: Double,
     var overview: String,

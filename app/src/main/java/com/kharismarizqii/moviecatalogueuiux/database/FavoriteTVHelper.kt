@@ -48,7 +48,7 @@ class FavoriteTVHelper(context: Context) {
             null,
             null,
             null,
-            "$ID ASC"
+            null
         )
     }
 

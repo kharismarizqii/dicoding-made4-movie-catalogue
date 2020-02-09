@@ -87,17 +87,9 @@ class MovieFragment : Fragment() {
     }
 
     private fun showSelectedData(movie: MovieDB) {
-        val movieDB = MovieDB(
-            movie.title,
-            movie.rating,
-            movie.overview,
-            movie.releaseDate,
-            movie.posterPath,
-            movie.backdropPath
-        )
 
         val moveObjectIntent = Intent(activity, DetailMovieActivity::class.java)
-        moveObjectIntent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movieDB)
+        moveObjectIntent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movie)
         startActivity(moveObjectIntent)
     }
 

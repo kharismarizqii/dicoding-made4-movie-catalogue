@@ -1,6 +1,7 @@
 package com.kharismarizqii.moviecatalogueuiux.helper
 
 import android.database.Cursor
+import android.util.Log
 import com.kharismarizqii.moviecatalogueuiux.database.DatabaseContract
 import com.kharismarizqii.moviecatalogueuiux.model.FavoriteMovieDB
 import com.kharismarizqii.moviecatalogueuiux.model.FavoriteTVShowDB
@@ -9,7 +10,7 @@ object MappingHelper {
     fun mapCursorToArrayList(moviesCursor: Cursor): ArrayList<FavoriteMovieDB> {
         val movieList = ArrayList<FavoriteMovieDB>()
         moviesCursor.moveToFirst()
-        while (moviesCursor.moveToNext()) {
+        do{
             val id =
                 moviesCursor.getInt(moviesCursor.getColumnIndexOrThrow(DatabaseContract.FavoriteMovieColumns.ID))
             val title =
@@ -35,15 +36,16 @@ object MappingHelper {
                     backdropPath
                 )
             )
-        }
-
+        }while (moviesCursor.moveToNext())
+        Log.d("isi cursor", "movieList: ${movieList.count()}")
         return movieList
     }
 
     fun mapCursorToArrayListTV(tvShowsCursor: Cursor): ArrayList<FavoriteTVShowDB>{
         val tvShowList = ArrayList<FavoriteTVShowDB>()
         tvShowsCursor.moveToFirst()
-        while (tvShowsCursor.moveToNext()) {
+        Log.d("isicursor", "tvShowsCursor: $tvShowsCursor")
+        do {
             val id =
                 tvShowsCursor.getInt(tvShowsCursor.getColumnIndexOrThrow(DatabaseContract.FavoriteTVColumns.ID))
             val title =
@@ -69,7 +71,8 @@ object MappingHelper {
                     backdropPath
                 )
             )
-        }
+        } while (tvShowsCursor.moveToNext())
+        Log.d("isilist", "tvshowList: $tvShowList")
         return tvShowList
     }
 }

@@ -49,6 +49,7 @@ class TVShowViewModel(application: Application) : AndroidViewModel(application){
                 for (position in 0..jsonArray.length()-1){
                     val data: JSONObject = jsonArray.getJSONObject(position)
                     val tvShowDB = TVShowDB(
+                        data.getInt("id"),
                         data.getString("name"),
                         data.getDouble("vote_average"),
                         data.getString("overview"),
