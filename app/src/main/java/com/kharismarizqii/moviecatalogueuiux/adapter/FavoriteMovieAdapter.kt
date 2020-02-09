@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kharismarizqii.moviecatalogueuiux.model.FavoriteMovieDB
 import com.kharismarizqii.moviecatalogueuiux.R
+import com.kharismarizqii.moviecatalogueuiux.database.FavoriteMovieHelper
+import com.kharismarizqii.moviecatalogueuiux.model.FavoriteMovieDB
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_favorite_movie.view.*
 
 class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewViewHolder>() {
 
     private var pathPoster = "https://image.tmdb.org/t/p/w185"
+    private lateinit var favoriteMovieHelper: FavoriteMovieHelper
 
     var listMovie = ArrayList<FavoriteMovieDB>()
         set(listMovie) {
@@ -33,13 +35,20 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewV
                 Log.d("isi objek", "CardViewViewHolder ${movieDB.title}")
                 tvm_overview.text = movieDB.overview
                 tvm_rating.text = movieDB.rating.toString()
-                Picasso.get().load(pathPoster+movieDB.posterPath).into(ivm_poster)
+                Picasso.get().load(pathPoster + movieDB.posterPath).into(ivm_poster)
+                btn_detail.setOnClickListener {
+                    favoriteMovieHelper = FavoriteMovieHelper.getInstance(context!!)
+                    favoriteMovieHelper.open()
+                    favoriteMovieHelper.deleteById(movieDB.id.toString())
+                    removeItem(adapterPosition)
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_favorite_movie, parent, false)
         return CardViewViewHolder(view)
     }
 
@@ -51,15 +60,6 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewV
         holder.bind(listMovie[position])
     }
 
-    fun addItem(movieDB: FavoriteMovieDB) {
-        this.listMovie.add(movieDB)
-        notifyItemInserted(this.listMovie.size - 1)
-    }
-
-    fun updateItem(position: Int, movieDB: FavoriteMovieDB) {
-        this.listMovie[position] = movieDB
-        notifyItemChanged(position, movieDB)
-    }
 
     fun removeItem(position: Int) {
         this.listMovie.removeAt(position)

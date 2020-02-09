@@ -110,7 +110,7 @@ class DetailMovieActivity : AppCompatActivity() {
         if (result > 0) {
             movieFav?.id = result.toInt()
             setResult(RESULT_ADD, intent)
-            finish()
+            Toast.makeText(this@DetailMovieActivity,R.string.toast_success , Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this@DetailMovieActivity, R.string.toast_failedmovie, Toast.LENGTH_SHORT)
                 .show()

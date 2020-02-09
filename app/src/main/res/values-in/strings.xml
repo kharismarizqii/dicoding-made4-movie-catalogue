@@ -18,4 +18,7 @@
     <string name="cd_poster_tv">Poster Acara TV</string>
     <string name="toast_failedtv">TV Show ini sudah jadi favorit anda</string>
     <string name="toast_failedmovie">Film ini sudah jadi favorit anda</string>
+    <string name="remove">Hapus</string>
+    <string name="toast_success">Ditambahkan ke favorit</string>
+
 </resources>

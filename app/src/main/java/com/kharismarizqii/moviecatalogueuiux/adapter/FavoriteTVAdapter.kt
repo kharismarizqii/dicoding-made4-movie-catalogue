@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kharismarizqii.moviecatalogueuiux.R
+import com.kharismarizqii.moviecatalogueuiux.database.FavoriteTVHelper
 import com.kharismarizqii.moviecatalogueuiux.model.FavoriteTVShowDB
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_favorite_tvshow.view.*
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.item_favorite_tvshow.view.*
 class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHolder>() {
 
     private var pathPoster = "https://image.tmdb.org/t/p/w185"
+    private lateinit var favoriteTVHelper: FavoriteTVHelper
 
     var listTVShow = ArrayList<FavoriteTVShowDB>()
         set(listTVShow) {
@@ -29,6 +31,12 @@ class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHol
                 tvm_overview.text = tvShowDB.overview
                 tvm_rating.text = tvShowDB.rating.toString()
                 Picasso.get().load(pathPoster + tvShowDB.posterPath).into(ivm_poster)
+                btn_detail.setOnClickListener {
+                    favoriteTVHelper = FavoriteTVHelper.getInstance(context!!)
+                    favoriteTVHelper.open()
+                    favoriteTVHelper.deleteById(tvShowDB.id.toString())
+                    removeItem(adapterPosition)
+                }
             }
         }
     }
@@ -47,19 +55,12 @@ class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHol
         holder.bind(listTVShow[position])
     }
 
-    fun addItem(tvShowDB: FavoriteTVShowDB) {
-        this.listTVShow.add(tvShowDB)
-        notifyItemInserted(this.listTVShow.size - 1)
-    }
-
-    fun updateItem(position: Int, tvShowDB: FavoriteTVShowDB) {
-        this.listTVShow[position] = tvShowDB
-        notifyItemChanged(position, tvShowDB)
-    }
 
     fun removeItem(position: Int) {
         this.listTVShow.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, this.listTVShow.size)
     }
+
+
 }

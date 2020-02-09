@@ -65,7 +65,7 @@
         <Button
             android:id="@+id/btn_detail"
             style="@style/ButtonGeneral"
-            android:text="@string/detail"
+            android:text="@string/remove"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent" />
 

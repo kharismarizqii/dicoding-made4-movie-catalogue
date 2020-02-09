@@ -105,7 +105,7 @@ class DetailTVShowActivity : AppCompatActivity() {
         if (result > 0) {
             tvShowFav?.id = result.toInt()
             setResult(RESULT_ADD, intent)
-            finish()
+            Toast.makeText(this@DetailTVShowActivity,R.string.toast_success , Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this@DetailTVShowActivity, R.string.toast_failedtv, Toast.LENGTH_SHORT)
                 .show()

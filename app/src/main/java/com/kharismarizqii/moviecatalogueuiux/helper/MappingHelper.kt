@@ -9,8 +9,7 @@ import com.kharismarizqii.moviecatalogueuiux.model.FavoriteTVShowDB
 object MappingHelper {
     fun mapCursorToArrayList(moviesCursor: Cursor): ArrayList<FavoriteMovieDB> {
         val movieList = ArrayList<FavoriteMovieDB>()
-        moviesCursor.moveToFirst()
-        do{
+        while (moviesCursor.moveToNext()){
             val id =
                 moviesCursor.getInt(moviesCursor.getColumnIndexOrThrow(DatabaseContract.FavoriteMovieColumns.ID))
             val title =
@@ -36,16 +35,15 @@ object MappingHelper {
                     backdropPath
                 )
             )
-        }while (moviesCursor.moveToNext())
+        }
         Log.d("isi cursor", "movieList: ${movieList.count()}")
         return movieList
     }
 
     fun mapCursorToArrayListTV(tvShowsCursor: Cursor): ArrayList<FavoriteTVShowDB>{
         val tvShowList = ArrayList<FavoriteTVShowDB>()
-        tvShowsCursor.moveToFirst()
         Log.d("isicursor", "tvShowsCursor: $tvShowsCursor")
-        do {
+        while (tvShowsCursor.moveToNext()) {
             val id =
                 tvShowsCursor.getInt(tvShowsCursor.getColumnIndexOrThrow(DatabaseContract.FavoriteTVColumns.ID))
             val title =
@@ -71,7 +69,7 @@ object MappingHelper {
                     backdropPath
                 )
             )
-        } while (tvShowsCursor.moveToNext())
+        }
         Log.d("isilist", "tvshowList: $tvShowList")
         return tvShowList
     }

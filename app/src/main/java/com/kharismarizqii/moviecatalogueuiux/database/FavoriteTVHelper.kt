@@ -69,7 +69,7 @@ class FavoriteTVHelper(context: Context) {
         return database.insert(DATABASE_TABLE, null, values)
     }
 
-    fun update(id: String, values: ContentValues?): Int {
-        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
+    fun deleteById(id: String): Int{
+        return database.delete(TABLE_NAME, "$ID = '$id'", null)
     }
 }
