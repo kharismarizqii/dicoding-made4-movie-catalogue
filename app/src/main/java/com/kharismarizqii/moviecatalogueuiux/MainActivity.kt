@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration.Builder(
             //this is belong to menu item, not the navigation
-            R.id.navigation_movie, R.id.navigation_tv
+            R.id.navigation_movie, R.id.navigation_tv, R.id.navigation_fav
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)

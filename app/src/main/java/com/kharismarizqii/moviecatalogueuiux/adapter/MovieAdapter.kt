@@ -1,10 +1,10 @@
-package com.kharismarizqii.moviecatalogueuiux.Adapter
+package com.kharismarizqii.moviecatalogueuiux.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kharismarizqii.moviecatalogueuiux.Model.MovieDB
+import com.kharismarizqii.moviecatalogueuiux.model.MovieDB
 import com.kharismarizqii.moviecatalogueuiux.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*

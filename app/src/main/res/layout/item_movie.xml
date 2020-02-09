@@ -33,6 +33,7 @@
                 android:id="@+id/ivm_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/cd_poster_movie"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster_aquaman" />
 
@@ -47,35 +48,35 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/title_bar_1"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/cardView"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_bar_1" />
 
         <TextView
             android:id="@+id/tvm_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_star_24dp"
-            android:text="TextView"
+            android:drawableStart="@drawable/ic_star_24dp"
             card_view:layout_constraintStart_toStartOf="@+id/tvm_title"
-            card_view:layout_constraintTop_toBottomOf="@+id/tvm_title" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tvm_title"
+            tools:text="TextView" />
 
         <Button
             android:id="@+id/btn_detail"
             style="@style/ButtonGeneral"
-            android:text="Detail"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent" />
+            card_view:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/detail" />
 
         <TextView
             android:id="@+id/tvket1left"
             style="@style/TextKeteranganLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tvt_overview"
             card_view:layout_constraintStart_toStartOf="@+id/tvm_rating"
-            card_view:layout_constraintTop_toBottomOf="@+id/tvm_rating" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tvm_rating"
+            android:text="@string/tvt_overview" />
 
         <TextView
             android:id="@+id/tvm_overview"
@@ -86,11 +87,11 @@
             android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="TextView"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/btn_detail"
             card_view:layout_constraintStart_toStartOf="@+id/tvket1left"
-            card_view:layout_constraintTop_toBottomOf="@+id/tvket1left" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tvket1left"
+            tools:text="TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

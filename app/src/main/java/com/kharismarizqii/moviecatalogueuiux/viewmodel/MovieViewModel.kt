@@ -1,4 +1,4 @@
-package com.kharismarizqii.moviecatalogueuiux.ViewModel
+package com.kharismarizqii.moviecatalogueuiux.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -10,8 +10,8 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.kharismarizqii.moviecatalogueuiux.Fragment.MovieFragment
-import com.kharismarizqii.moviecatalogueuiux.Model.MovieDB
+import com.kharismarizqii.moviecatalogueuiux.fragment.MovieFragment
+import com.kharismarizqii.moviecatalogueuiux.model.MovieDB
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -25,9 +25,9 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     companion object {
         private val TAG = MovieViewModel::class.java.simpleName
     }
-    val listMovies = MutableLiveData<ArrayList<MovieDB>>()
+    private val listMovies = MutableLiveData<ArrayList<MovieDB>>()
 
-    fun getLang(): String{
+    private fun getLang(): String{
         var currentLang = Locale.getDefault().toString()
         Log.d(TAG, "getLang: $currentLang")
         if(currentLang.equals("in_ID")){
@@ -44,8 +44,8 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null, Response.Listener{ response ->
             try {
                 val jsonArray: JSONArray = response.getJSONArray("results")
-                for (position in 0..jsonArray.length()-1){
-                    var data: JSONObject = jsonArray.getJSONObject(position)
+                for (position in 0 until jsonArray.length()-1){
+                    val data: JSONObject = jsonArray.getJSONObject(position)
                     val movieDB = MovieDB(
                         data.getString("title"),
                         data.getDouble("vote_average"),

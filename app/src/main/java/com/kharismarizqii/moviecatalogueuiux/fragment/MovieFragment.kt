@@ -1,4 +1,4 @@
-package com.kharismarizqii.moviecatalogueuiux.Fragment
+package com.kharismarizqii.moviecatalogueuiux.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kharismarizqii.moviecatalogueuiux.Adapter.MovieAdapter
+import com.kharismarizqii.moviecatalogueuiux.adapter.MovieAdapter
+import com.kharismarizqii.moviecatalogueuiux.BuildConfig
 import com.kharismarizqii.moviecatalogueuiux.DetailMovieActivity
 import com.kharismarizqii.moviecatalogueuiux.MainActivity
-import com.kharismarizqii.moviecatalogueuiux.Model.MovieDB
+import com.kharismarizqii.moviecatalogueuiux.model.MovieDB
 import com.kharismarizqii.moviecatalogueuiux.R
-import com.kharismarizqii.moviecatalogueuiux.ViewModel.MovieViewModel
+import com.kharismarizqii.moviecatalogueuiux.viewmodel.MovieViewModel
 
 
 /**
@@ -28,9 +29,9 @@ class MovieFragment : Fragment() {
     private lateinit var movieViewModel: MovieViewModel
     private lateinit var adapter: MovieAdapter
 
-    companion object{
+    companion object {
         private val TAG = MainActivity::class.java.simpleName
-        internal const val APP_ID = "f9987e3a05e2951834dc12b48850d089"
+        internal const val APP_ID = BuildConfig.TMDB_API_KEY
     }
 
     override fun onCreateView(
@@ -38,52 +39,54 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_movie, container, false)
+        return inflater.inflate(R.layout.fragment_movie, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         rvMovie = view.findViewById(R.id.rv_movie)
         prBar = view.findViewById(R.id.progressBar)
 
         showRecyclerCardView()
 
         rvMovie.setHasFixedSize(true)
-        return view
     }
 
-    private fun showLoading(state: Boolean){
-        if(state){
+    private fun showLoading(state: Boolean) {
+        if (state) {
             prBar.visibility = View.VISIBLE
-        } else{
+        } else {
             prBar.visibility = View.GONE
         }
     }
 
-    private fun showRecyclerCardView(){
+    private fun showRecyclerCardView() {
         adapter = MovieAdapter()
         adapter.notifyDataSetChanged()
 
         rvMovie.layoutManager = LinearLayoutManager(context)
         rvMovie.adapter = adapter
 
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
         movieViewModel.setMovies()
         showLoading(true)
 
 
         movieViewModel.getMovies().observe(this, androidx.lifecycle.Observer { movieItems ->
-            if (movieItems != null){
+            if (movieItems != null) {
                 adapter.setData(movieItems)
                 showLoading(false)
             }
         })
 
-        adapter.setOnItemClickCallback(object : MovieAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : MovieAdapter.OnItemClickCallback {
             override fun onItemClicked(data: MovieDB) {
                 showSelectedData(data)
             }
         })
     }
 
-    private fun showSelectedData(movie: MovieDB){
+    private fun showSelectedData(movie: MovieDB) {
         val movieDB = MovieDB(
             movie.title,
             movie.rating,

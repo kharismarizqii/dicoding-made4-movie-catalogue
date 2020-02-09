@@ -7,10 +7,13 @@
     <string name="change_language_settings">Ganti Bahasa</string>
     <string name="title_bar_1">Film</string>
     <string name="title_bar_2">Acara TV</string>
+    <string name="title_bar_3">Favorit</string>
     <string name="tvt_overview">Sinopsis</string>
     <string name="release">Rilis: </string>
     <string name="detail_movie">Detail Film</string>
     <string name="detail_tv">Detail Acara TV</string>
-
-
+    <string name="cd_backdrop_movie">Backdrop Film</string>
+    <string name="cd_poster_movie">Poster Film</string>
+    <string name="cd_backdrop_tv">Backdrop Acara TV</string>
+    <string name="cd_poster_tv">Poster Acara TV</string>
 </resources>

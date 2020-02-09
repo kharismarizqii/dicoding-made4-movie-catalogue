@@ -1,4 +1,4 @@
-package com.kharismarizqii.moviecatalogueuiux.ViewModel
+package com.kharismarizqii.moviecatalogueuiux.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -10,8 +10,8 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.kharismarizqii.moviecatalogueuiux.Fragment.TVShowFragment
-import com.kharismarizqii.moviecatalogueuiux.Model.TVShowDB
+import com.kharismarizqii.moviecatalogueuiux.fragment.TVShowFragment
+import com.kharismarizqii.moviecatalogueuiux.model.TVShowDB
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -26,9 +26,9 @@ class TVShowViewModel(application: Application) : AndroidViewModel(application){
         private val TAG = TVShowViewModel::class.java.simpleName
     }
 
-    val listTVShows = MutableLiveData<ArrayList<TVShowDB>>()
+    private val listTVShows = MutableLiveData<ArrayList<TVShowDB>>()
 
-    fun getLang(): String{
+    private fun getLang(): String{
         var currentLang = Locale.getDefault().toString()
         Log.d(TAG, "getLang: $currentLang")
         if(currentLang.equals("in_ID")){
@@ -47,7 +47,7 @@ class TVShowViewModel(application: Application) : AndroidViewModel(application){
             try {
                 val jsonArray: JSONArray = response.getJSONArray("results")
                 for (position in 0..jsonArray.length()-1){
-                    var data: JSONObject = jsonArray.getJSONObject(position)
+                    val data: JSONObject = jsonArray.getJSONObject(position)
                     val tvShowDB = TVShowDB(
                         data.getString("name"),
                         data.getDouble("vote_average"),

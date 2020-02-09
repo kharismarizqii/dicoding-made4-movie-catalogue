@@ -9,13 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".DetailTVShowActivity">
 
         <ImageView
             android:id="@+id/ivt_backdrop"
             android:layout_width="0dp"
             android:layout_height="250dp"
+            android:contentDescription="@string/cd_backdrop_tv"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:contentDescription="@string/cd_poster_tv"
             app:layout_constraintBottom_toTopOf="@+id/tv"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,20 +53,20 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/ivt_backdrop" />
+            app:layout_constraintTop_toBottomOf="@+id/ivt_backdrop"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvm_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_star_24dp"
-            android:text="TextView"
+            android:drawableStart="@drawable/ic_star_24dp"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/tvt_title"
-            app:layout_constraintTop_toBottomOf="@+id/tvt_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tvt_title"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/textView5"
@@ -84,10 +86,10 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            tools:text="TextView" />
 
 
         <TextView
@@ -107,11 +109,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv"
-            app:layout_constraintTop_toBottomOf="@+id/tv" />
+            app:layout_constraintTop_toBottomOf="@+id/tv"
+            tools:text="TextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -6,12 +6,17 @@
 
     <fragment
         android:id="@+id/navigation_movie"
-        android:name="com.kharismarizqii.moviecatalogueuiux.Fragment.MovieFragment"
+        android:name="com.kharismarizqii.moviecatalogueuiux.fragment.MovieFragment"
         android:label="@string/title_bar_1"
         tools:layout="@layout/fragment_movie" />
     <fragment
         android:id="@+id/navigation_tv"
-        android:name="com.kharismarizqii.moviecatalogueuiux.Fragment.TVShowFragment"
+        android:name="com.kharismarizqii.moviecatalogueuiux.fragment.TVShowFragment"
         android:label="@string/title_bar_2"
         tools:layout="@layout/fragment_tvshow" />
+    <fragment
+        android:id="@+id/navigation_fav"
+        android:name="com.kharismarizqii.moviecatalogueuiux.fragment.FavoriteFragment"
+        android:label="@string/title_bar_3"
+        tools:layout="@layout/fragment_favorite"/>
 </navigation>

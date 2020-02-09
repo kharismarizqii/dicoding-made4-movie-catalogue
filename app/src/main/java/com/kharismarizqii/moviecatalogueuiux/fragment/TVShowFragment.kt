@@ -1,24 +1,23 @@
-package com.kharismarizqii.moviecatalogueuiux.Fragment
+package com.kharismarizqii.moviecatalogueuiux.fragment
 
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kharismarizqii.moviecatalogueuiux.Adapter.TVShowAdapter
+import com.kharismarizqii.moviecatalogueuiux.BuildConfig
 import com.kharismarizqii.moviecatalogueuiux.DetailTVShowActivity
 import com.kharismarizqii.moviecatalogueuiux.MainActivity
-import com.kharismarizqii.moviecatalogueuiux.Model.TVShowDB
-
-
 import com.kharismarizqii.moviecatalogueuiux.R
-import com.kharismarizqii.moviecatalogueuiux.ViewModel.TVShowViewModel
+import com.kharismarizqii.moviecatalogueuiux.adapter.TVShowAdapter
+import com.kharismarizqii.moviecatalogueuiux.model.TVShowDB
+import com.kharismarizqii.moviecatalogueuiux.viewmodel.TVShowViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +30,7 @@ class TVShowFragment : Fragment() {
     private lateinit var adapter: TVShowAdapter
 
     companion object {
-        internal const val APP_ID = "f9987e3a05e2951834dc12b48850d089"
+        internal const val APP_ID = BuildConfig.TMDB_API_KEY
         private val TAG = MainActivity::class.java.simpleName
     }
 
@@ -40,15 +39,18 @@ class TVShowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_tvshow, container, false)
+        return inflater.inflate(R.layout.fragment_tvshow, container, false)
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         rvTVShow = view.findViewById(R.id.rv_tvshow)
         prBar = view.findViewById(R.id.progressBartv)
 
         showRecyclerCardView()
 
         rvTVShow.setHasFixedSize(true)
-        return view
     }
 
 
@@ -59,7 +61,7 @@ class TVShowFragment : Fragment() {
         rvTVShow.layoutManager = LinearLayoutManager(context)
         rvTVShow.adapter = adapter
 
-        tvShowViewModel = ViewModelProviders.of(this).get(TVShowViewModel::class.java)
+        tvShowViewModel = ViewModelProvider(this).get(TVShowViewModel::class.java)
         tvShowViewModel.setTVShows()
         showLoading(true)
 
@@ -78,17 +80,8 @@ class TVShowFragment : Fragment() {
     }
 
     private fun showSelectedData(tvShow: TVShowDB) {
-        val tvShowDB = TVShowDB(
-            tvShow.title,
-            tvShow.rating,
-            tvShow.overview,
-            tvShow.firstAirDate,
-            tvShow.posterPath,
-            tvShow.backdropPath
-        )
-
         val moveObjectIntent = Intent(activity, DetailTVShowActivity::class.java)
-        moveObjectIntent.putExtra(DetailTVShowActivity.EXTRA_TVSHOW, tvShowDB)
+        moveObjectIntent.putExtra(DetailTVShowActivity.EXTRA_TVSHOW, tvShow)
         startActivity(moveObjectIntent)
     }
 

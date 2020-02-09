@@ -1,4 +1,4 @@
-package com.kharismarizqii.moviecatalogueuiux.Model
+package com.kharismarizqii.moviecatalogueuiux.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
