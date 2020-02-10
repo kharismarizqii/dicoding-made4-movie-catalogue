@@ -63,10 +63,20 @@
             card_view:layout_constraintTop_toBottomOf="@+id/tvm_title" />
 
         <Button
-            android:id="@+id/btn_detail"
+            android:id="@+id/btn_remove"
             style="@style/ButtonGeneral"
             android:text="@string/remove"
             card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_detail"
+            style="@style/ButtonGeneral"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/detail"
+            card_view:layout_constraintBottom_toTopOf="@+id/btn_remove"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -87,11 +97,11 @@
             android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="3"
-            tools:text="TextView"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/btn_detail"
+            card_view:layout_constraintEnd_toStartOf="@id/btn_detail"
             card_view:layout_constraintStart_toStartOf="@+id/tvket1left"
-            card_view:layout_constraintTop_toBottomOf="@+id/tvket1left" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tvket1left"
+            tools:text="TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

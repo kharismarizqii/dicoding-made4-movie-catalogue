@@ -36,7 +36,7 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewV
                 tvm_overview.text = movieDB.overview
                 tvm_rating.text = movieDB.rating.toString()
                 Picasso.get().load(pathPoster + movieDB.posterPath).into(ivm_poster)
-                btn_detail.setOnClickListener {
+                btn_remove.setOnClickListener {
                     favoriteMovieHelper = FavoriteMovieHelper.getInstance(context!!)
                     favoriteMovieHelper.open()
                     favoriteMovieHelper.deleteById(movieDB.id.toString())

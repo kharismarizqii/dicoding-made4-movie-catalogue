@@ -31,7 +31,7 @@ class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHol
                 tvm_overview.text = tvShowDB.overview
                 tvm_rating.text = tvShowDB.rating.toString()
                 Picasso.get().load(pathPoster + tvShowDB.posterPath).into(ivm_poster)
-                btn_detail.setOnClickListener {
+                btn_remove.setOnClickListener {
                     favoriteTVHelper = FavoriteTVHelper.getInstance(context!!)
                     favoriteTVHelper.open()
                     favoriteTVHelper.deleteById(tvShowDB.id.toString())

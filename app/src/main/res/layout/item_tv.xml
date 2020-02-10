@@ -67,9 +67,9 @@
         <Button
             android:id="@+id/btn_detail"
             style="@style/ButtonGeneral"
+            android:text="@string/detail"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            android:text="Detail" />
+            card_view:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
@@ -90,7 +90,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/btn_detail"
+            card_view:layout_constraintEnd_toStartOf="@id/btn_detail"
             card_view:layout_constraintStart_toStartOf="@+id/textView3"
             card_view:layout_constraintTop_toBottomOf="@+id/textView3"
             tools:text="TextView" />

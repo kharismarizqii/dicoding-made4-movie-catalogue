@@ -88,7 +88,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/btn_detail"
+            card_view:layout_constraintEnd_toStartOf="@id/btn_detail"
             card_view:layout_constraintStart_toStartOf="@+id/tvket1left"
             card_view:layout_constraintTop_toBottomOf="@+id/tvket1left"
             tools:text="TextView" />
