@@ -12,8 +12,17 @@ import kotlinx.android.synthetic.main.item_favorite_tvshow.view.*
 
 class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHolder>() {
 
+    private var onItemClickCallback : OnItemClickCallback? = null
     private var pathPoster = "https://image.tmdb.org/t/p/w185"
     private lateinit var favoriteTVHelper: FavoriteTVHelper
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: FavoriteTVShowDB)
+    }
 
     var listTVShow = ArrayList<FavoriteTVShowDB>()
         set(listTVShow) {
@@ -37,6 +46,7 @@ class FavoriteTVAdapter : RecyclerView.Adapter<FavoriteTVAdapter.CardViewViewHol
                     favoriteTVHelper.deleteById(tvShowDB.id.toString())
                     removeItem(adapterPosition)
                 }
+                btn_detail.setOnClickListener{onItemClickCallback?.onItemClicked(tvShowDB)}
             }
         }
     }

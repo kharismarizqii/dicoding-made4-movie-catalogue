@@ -73,6 +73,10 @@ class DetailTVShowActivity : AppCompatActivity() {
                 addToFavorite(tvShow!!)
                 return true
             }
+            android.R.id.home ->{
+                finish()
+                return true
+            }
             else -> return true
         }
     }

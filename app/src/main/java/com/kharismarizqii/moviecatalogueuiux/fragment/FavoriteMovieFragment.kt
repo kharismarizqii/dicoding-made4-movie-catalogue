@@ -1,6 +1,7 @@
 package com.kharismarizqii.moviecatalogueuiux.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kharismarizqii.moviecatalogueuiux.DetailMovieFavoriteActivity
 import com.kharismarizqii.moviecatalogueuiux.R
 import com.kharismarizqii.moviecatalogueuiux.adapter.FavoriteMovieAdapter
 import com.kharismarizqii.moviecatalogueuiux.database.FavoriteMovieHelper
@@ -51,6 +53,13 @@ class FavoriteMovieFragment : Fragment() {
         favoriteMovieHelper = FavoriteMovieHelper.getInstance(context!!)
         favoriteMovieHelper.open()
 
+        adapter.setOnItemClickCallback(object : FavoriteMovieAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: FavoriteMovieDB) {
+                showSelectedData(data)
+            }
+
+        })
+
         if (savedInstanceState == null){
             loadMoviesAsync()
         } else{
@@ -84,6 +93,13 @@ class FavoriteMovieFragment : Fragment() {
                 adapter.listMovie = ArrayList()
             }
         }
+    }
+
+    private fun showSelectedData(movie: FavoriteMovieDB) {
+
+        val moveObjectIntent = Intent(activity, DetailMovieFavoriteActivity::class.java)
+        moveObjectIntent.putExtra(DetailMovieFavoriteActivity.EXTRA_MOVIE, movie)
+        startActivity(moveObjectIntent)
     }
 
     override fun onDestroy() {

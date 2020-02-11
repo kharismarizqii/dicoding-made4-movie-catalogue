@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".DetailMovieActivity">
+
+        <ImageView
+            android:id="@+id/ivt_backdrop"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:contentDescription="@string/cd_backdrop_movie"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poster_aquaman" />
+
+        <ImageView
+            android:id="@+id/ivt_poster"
+            android:layout_width="0dp"
+            android:layout_height="270dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/cd_poster_movie"
+            app:layout_constraintBottom_toTopOf="@+id/tv"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.90999997"
+            app:srcCompat="@drawable/poster_a_star" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="214dp" />
+
+        <TextView
+            android:id="@+id/tvm_title"
+            style="@style/TextTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ivt_backdrop"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvm_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_star_24dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/tvm_title"
+            app:layout_constraintTop_toBottomOf="@+id/tvm_title"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/TextKeteranganLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/release"
+            app:layout_constraintStart_toStartOf="@+id/tvm_rating"
+            app:layout_constraintTop_toBottomOf="@+id/tvm_rating" />
+
+        <TextView
+            android:id="@+id/tvm_release"
+            style="@style/TextKeteranganRight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            tools:text="TextView" />
+
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/TextOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="42dp"
+            android:text="@string/tvt_overview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvm_release" />
+
+        <TextView
+            android:id="@+id/tvm_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv"
+            app:layout_constraintTop_toBottomOf="@+id/tv"
+            tools:text="TextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

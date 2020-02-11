@@ -2,18 +2,17 @@ package com.kharismarizqii.moviecatalogueuiux
 
 import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.kharismarizqii.moviecatalogueuiux.database.DatabaseContract
 import com.kharismarizqii.moviecatalogueuiux.database.FavoriteMovieHelper
 import com.kharismarizqii.moviecatalogueuiux.model.FavoriteMovieDB
 import com.kharismarizqii.moviecatalogueuiux.model.MovieDB
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_movie.*
-import kotlinx.android.synthetic.main.activity_detail_movie.tvm_title
 
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -35,15 +34,6 @@ class DetailMovieActivity : AppCompatActivity() {
         const val RESULT_DELETE = 311
         const val EXTRA_MOVIE_FAV = "extra_movie_fav"
         const val EXTRA_POSITION_MOVIE = "extra_position_movie"
-    }
-
-    override fun onResume() {
-        super.onResume()
-        checkFavorite()
-    }
-
-    private fun checkFavorite() {
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,10 +62,15 @@ class DetailMovieActivity : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite -> {
                 addToFavorite(movie!!)
+                return true
+            }
+            android.R.id.home ->{
+                finish()
                 return true
             }
             else -> return true
@@ -110,7 +105,8 @@ class DetailMovieActivity : AppCompatActivity() {
         if (result > 0) {
             movieFav?.id = result.toInt()
             setResult(RESULT_ADD, intent)
-            Toast.makeText(this@DetailMovieActivity,R.string.toast_success , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@DetailMovieActivity, R.string.toast_success, Toast.LENGTH_SHORT)
+                .show()
         } else {
             Toast.makeText(this@DetailMovieActivity, R.string.toast_failedmovie, Toast.LENGTH_SHORT)
                 .show()

@@ -1,12 +1,14 @@
 package com.kharismarizqii.moviecatalogueuiux.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kharismarizqii.moviecatalogueuiux.DetailTVShowFavoriteActivity
 import com.kharismarizqii.moviecatalogueuiux.R
 import com.kharismarizqii.moviecatalogueuiux.adapter.FavoriteTVAdapter
 import com.kharismarizqii.moviecatalogueuiux.database.FavoriteTVHelper
@@ -48,6 +50,13 @@ class FavoriteTVShowFragment : Fragment() {
         favoriteTVHelper = FavoriteTVHelper.getInstance(context!!)
         favoriteTVHelper.open()
 
+        adapter.setOnItemClickCallback(object : FavoriteTVAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: FavoriteTVShowDB) {
+                showSelectedData(data)
+            }
+
+        })
+
         if (savedInstanceState == null) {
             loadTVAsync()
         } else {
@@ -83,6 +92,13 @@ class FavoriteTVShowFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         favoriteTVHelper.close()
+    }
+
+    private fun showSelectedData(movie: FavoriteTVShowDB) {
+
+        val moveObjectIntent = Intent(activity, DetailTVShowFavoriteActivity::class.java)
+        moveObjectIntent.putExtra(DetailTVShowFavoriteActivity.EXTRA_MOVIE, movie)
+        startActivity(moveObjectIntent)
     }
 
 

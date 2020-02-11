@@ -13,8 +13,17 @@ import kotlinx.android.synthetic.main.item_favorite_movie.view.*
 
 class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewViewHolder>() {
 
+    private var onItemClickCallback : OnItemClickCallback? = null
     private var pathPoster = "https://image.tmdb.org/t/p/w185"
     private lateinit var favoriteMovieHelper: FavoriteMovieHelper
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: FavoriteMovieDB)
+    }
 
     var listMovie = ArrayList<FavoriteMovieDB>()
         set(listMovie) {
@@ -42,6 +51,7 @@ class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.CardViewV
                     favoriteMovieHelper.deleteById(movieDB.id.toString())
                     removeItem(adapterPosition)
                 }
+                btn_detail.setOnClickListener{onItemClickCallback?.onItemClicked(movieDB)}
             }
         }
     }
